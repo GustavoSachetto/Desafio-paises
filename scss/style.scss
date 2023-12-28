@@ -20,6 +20,7 @@ $light-theme-colors: (
     padding: 0;
     border: 0;
     text-decoration: none;
+    list-style: none;
     font-family: $font-default;
 }
 
@@ -29,8 +30,15 @@ $light-theme-colors: (
 }
 
 @mixin element($colors) {
+    cursor: pointer;
     background-color: map-get($colors, "element");
-    box-shadow: 0 0 4px rgb(map-get($colors, "text"), .15);
+    box-shadow: 0 0 8px rgb(map-get($colors, "text"), .09);
+    border-radius: 6px;
+    transition: 300ms ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 8px rgb(map-get($colors, "text"), .22);
+    }
 }
 
 body {
@@ -59,5 +67,49 @@ header {
 }
 
 main {
-    
+    padding: 0 60px;
+    article {
+        .container-search {
+            display: flex;
+            justify-content: space-between;
+
+            .text-search, .select-search {
+                @include element($light-theme-colors);
+                font-size: 22px;
+                padding: 10px 20px;
+            }
+        }
+
+        .container-countries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+
+            .container-country {
+                width: 280px;
+                height: 350px;
+                @include element($light-theme-colors);
+                
+                .country-img {
+                    object-fit: cover;
+                    border-radius: 6px 6px 0 0;
+                    width: 100%;
+                    height: 170px;
+                }
+
+                .country-text {
+                    padding: 26px;
+                    
+                    .country-name {
+                        font-size: 23px;
+                        margin-bottom: 12px;
+                    }
+                    .country-information li {
+                        margin-bottom: 2px;
+                    }
+                }
+            }
+        }
+    }
 }
