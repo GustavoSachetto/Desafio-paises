@@ -30,7 +30,6 @@ $light-theme-colors: (
 }
 
 @mixin element($colors) {
-    cursor: pointer;
     background-color: map-get($colors, "element");
     box-shadow: 0 0 8px rgb(map-get($colors, "text"), .09);
     border-radius: 6px;
@@ -51,11 +50,15 @@ body.dark {
 
 header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    margin-bottom: 40px;
     padding: 26px 60px;
+    background-color: map-get($light-theme-colors, "element");
+    box-shadow: 0 2px 4px rgb($shadow-default-color, .12);
 
     h1 {
-        font-size: 30px;
+        font-size: 27px;
         font-weight: bold;
     }
 
@@ -72,11 +75,42 @@ main {
         .container-search {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 40px;
+
+            .text-search {
+                i {
+                    left: 30px;
+                    font-size: 23px;
+                    font-weight: bold;
+                    position: absolute;
+                    color: $shadow-default-color;
+                }
+            }
 
             .text-search, .select-search {
-                @include element($light-theme-colors);
-                font-size: 22px;
-                padding: 10px 20px;
+                display: flex;
+                align-items: center;
+                position: relative;
+                
+                input, select {
+                    @include element($light-theme-colors);
+                    padding: 19px 24px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                input {
+                    width: 370px;
+                    padding-left: 70px;
+
+                    &::placeholder {
+                        color: $shadow-default-color;
+                    }
+                }
+
+                select {
+                    width: 220px;
+                }
             }
         }
 
@@ -89,6 +123,7 @@ main {
             .container-country {
                 width: 280px;
                 height: 350px;
+                cursor: pointer;
                 @include element($light-theme-colors);
                 
                 .country-img {

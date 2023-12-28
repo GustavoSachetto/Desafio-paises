@@ -20,11 +20,15 @@ body.dark {
 
 header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 40px;
   padding: 26px 60px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 4px rgba(133, 133, 133, 0.12);
 }
 header h1 {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: bold;
 }
 header .container-theme {
@@ -39,18 +43,41 @@ main {
 main article .container-search {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
+}
+main article .container-search .text-search i {
+  left: 30px;
+  font-size: 23px;
+  font-weight: bold;
+  position: absolute;
+  color: hsl(0, 0%, 52%);
 }
 main article .container-search .text-search, main article .container-search .select-search {
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+main article .container-search .text-search input, main article .container-search .text-search select, main article .container-search .select-search input, main article .container-search .select-search select {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
   border-radius: 6px;
   transition: 300ms ease-in-out;
-  font-size: 22px;
-  padding: 10px 20px;
+  padding: 19px 24px;
+  font-size: 16px;
+  font-weight: 600;
 }
-main article .container-search .text-search:hover, main article .container-search .select-search:hover {
+main article .container-search .text-search input:hover, main article .container-search .text-search select:hover, main article .container-search .select-search input:hover, main article .container-search .select-search select:hover {
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
+}
+main article .container-search .text-search input, main article .container-search .select-search input {
+  width: 370px;
+  padding-left: 70px;
+}
+main article .container-search .text-search input::placeholder, main article .container-search .select-search input::placeholder {
+  color: hsl(0, 0%, 52%);
+}
+main article .container-search .text-search select, main article .container-search .select-search select {
+  width: 220px;
 }
 main article .container-countries {
   display: flex;
