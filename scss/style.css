@@ -12,13 +12,10 @@ body {
   color: hsl(200, 15%, 8%);
   background-color: hsl(0, 0%, 98%);
 }
-
-body.dark {
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(207, 26%, 17%);
+body i.light {
+  display: none;
 }
-
-header {
+body header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,37 +24,44 @@ header {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 2px 4px rgba(133, 133, 133, 0.12);
 }
-header h1 {
+body header h1 {
   font-size: 27px;
   font-weight: bold;
 }
-header .container-theme {
+body header .container-theme {
+  color: hsl(200, 15%, 8%);
   display: flex;
-  font-size: 18px;
+  align-items: center;
+  font-size: 19px;
   font-weight: bold;
+  background: transparent;
+  cursor: pointer;
 }
-
-main {
+body header .container-theme i {
+  font-size: 19px;
+  padding-right: 6px;
+}
+body main {
   padding: 0 60px;
 }
-main article .container-search {
+body main article .container-search {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
 }
-main article .container-search .text-search i {
+body main article .container-search .text-search i {
   left: 30px;
   font-size: 23px;
   font-weight: bold;
   position: absolute;
   color: hsl(0, 0%, 52%);
 }
-main article .container-search .text-search, main article .container-search .select-search {
+body main article .container-search .text-search, body main article .container-search .select-search {
   display: flex;
   align-items: center;
   position: relative;
 }
-main article .container-search .text-search input, main article .container-search .text-search select, main article .container-search .select-search input, main article .container-search .select-search select {
+body main article .container-search .text-search input, body main article .container-search .text-search select, body main article .container-search .select-search input, body main article .container-search .select-search select {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
   border-radius: 6px;
@@ -66,26 +70,26 @@ main article .container-search .text-search input, main article .container-searc
   font-size: 17px;
   font-weight: 600;
 }
-main article .container-search .text-search input:hover, main article .container-search .text-search select:hover, main article .container-search .select-search input:hover, main article .container-search .select-search select:hover {
+body main article .container-search .text-search input:hover, body main article .container-search .text-search select:hover, body main article .container-search .select-search input:hover, body main article .container-search .select-search select:hover {
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
 }
-main article .container-search .text-search input, main article .container-search .select-search input {
+body main article .container-search .text-search input, body main article .container-search .select-search input {
   width: 370px;
   padding-left: 70px;
 }
-main article .container-search .text-search input::placeholder, main article .container-search .select-search input::placeholder {
+body main article .container-search .text-search input::placeholder, body main article .container-search .select-search input::placeholder {
   color: hsl(0, 0%, 52%);
 }
-main article .container-search .text-search select, main article .container-search .select-search select {
+body main article .container-search .text-search select, body main article .container-search .select-search select {
   width: 220px;
 }
-main article .container-countries {
+body main article .container-countries {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
 }
-main article .container-countries .container-country {
+body main article .container-countries .container-country {
   width: 280px;
   height: 350px;
   cursor: pointer;
@@ -94,24 +98,66 @@ main article .container-countries .container-country {
   border-radius: 6px;
   transition: 300ms ease-in-out;
 }
-main article .container-countries .container-country:hover {
+body main article .container-countries .container-country:hover {
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
 }
-main article .container-countries .container-country .country-img {
+body main article .container-countries .container-country .country-img {
   object-fit: cover;
   border-radius: 6px 6px 0 0;
   width: 100%;
   height: 170px;
 }
-main article .container-countries .container-country .country-text {
+body main article .container-countries .container-country .country-text {
   padding: 26px;
 }
-main article .container-countries .container-country .country-text .country-name {
+body main article .container-countries .container-country .country-text .country-name {
   font-size: 23px;
   margin-bottom: 12px;
 }
-main article .container-countries .container-country .country-text .country-information li {
+body main article .container-countries .container-country .country-text .country-information li {
   margin-bottom: 2px;
+}
+body main article .container-countries .container-country .country-text .country-information li strong {
+  font-weight: 600;
+}
+
+body.dark {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(207, 26%, 17%);
+}
+body.dark i.light {
+  display: block;
+}
+body.dark header {
+  background-color: hsl(209, 23%, 22%);
+}
+body.dark header .container-theme {
+  color: hsl(0, 0%, 100%);
+}
+body.dark main article .container-search .text-search i {
+  color: hsl(0, 0%, 100%);
+}
+body.dark main article .container-search input, body.dark main article .container-search select {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(209, 23%, 22%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.09);
+  border-radius: 6px;
+  transition: 300ms ease-in-out;
+}
+body.dark main article .container-search input:hover, body.dark main article .container-search select:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.22);
+}
+body.dark main article .container-search input::placeholder, body.dark main article .container-search select::placeholder {
+  color: hsl(0, 0%, 100%);
+}
+body.dark main article .container-countries .container-country {
+  background-color: hsl(209, 23%, 22%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.09);
+  border-radius: 6px;
+  transition: 300ms ease-in-out;
+}
+body.dark main article .container-countries .container-country:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.22);
 }
 
 /*# sourceMappingURL=style.css.map */

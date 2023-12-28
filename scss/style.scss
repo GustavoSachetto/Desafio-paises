@@ -41,110 +41,147 @@ $light-theme-colors: (
 }
 
 body {
+    i.light { display: none; }
     @include theme($light-theme-colors);
-}
-
-body.dark {
-    @include theme($dark-theme-colors);
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 26px 60px;
-    background-color: map-get($light-theme-colors, "element");
-    box-shadow: 0 2px 4px rgb($shadow-default-color, .12);
-
-    h1 {
-        font-size: 27px;
-        font-weight: bold;
-    }
-
-    .container-theme {
+    
+    header {
         display: flex;
-        font-size: 18px;
-        font-weight: bold;
-    }
-}
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        padding: 26px 60px;
+        background-color: map-get($light-theme-colors, "element");
+        box-shadow: 0 2px 4px rgb($shadow-default-color, .12);
 
-main {
-    padding: 0 60px;
-    article {
-        .container-search {
+        h1 {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .container-theme {
+            color: map-get($light-theme-colors, "text");
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
+            align-items: center;
+            font-size: 19px;
+            font-weight: bold;
+            background: transparent;
+            cursor: pointer;
 
-            .text-search {
-                i {
-                    left: 30px;
-                    font-size: 23px;
-                    font-weight: bold;
-                    position: absolute;
-                    color: $shadow-default-color;
-                }
+            i {
+                font-size: 19px;
+                padding-right: 6px;
             }
+        }
+    }
 
-            .text-search, .select-search {
+    main {
+        padding: 0 60px;
+
+        article {
+            .container-search {
                 display: flex;
-                align-items: center;
-                position: relative;
-                
-                input, select {
-                    @include element($light-theme-colors);
-                    padding: 19px 24px;
-                    font-size: 17px;
-                    font-weight: 600;
-                }
+                justify-content: space-between;
+                margin-bottom: 40px;
 
-                input {
-                    width: 370px;
-                    padding-left: 70px;
-
-                    &::placeholder {
+                .text-search {
+                    i {
+                        left: 30px;
+                        font-size: 23px;
+                        font-weight: bold;
+                        position: absolute;
                         color: $shadow-default-color;
                     }
                 }
 
-                select {
-                    width: 220px;
+                .text-search, .select-search {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    
+                    input, select {
+                        @include element($light-theme-colors);
+                        padding: 19px 24px;
+                        font-size: 17px;
+                        font-weight: 600;
+                    }
+
+                    input {
+                        width: 370px;
+                        padding-left: 70px;
+
+                        &::placeholder {
+                            color: $shadow-default-color;
+                        }
+                    }
+
+                    select {
+                        width: 220px;
+                    }
+                }
+            }
+
+            .container-countries {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 30px;
+                justify-content: space-between;
+
+                .container-country {
+                    width: 280px;
+                    height: 350px;
+                    cursor: pointer;
+                    @include element($light-theme-colors);
+                    
+                    .country-img {
+                        object-fit: cover;
+                        border-radius: 6px 6px 0 0;
+                        width: 100%;
+                        height: 170px;
+                    }
+
+                    .country-text {
+                        padding: 26px;
+                        
+                        .country-name {
+                            font-size: 23px;
+                            margin-bottom: 12px;
+                        }
+                        .country-information li {
+                            strong { font-weight: 600; }
+                            margin-bottom: 2px;
+                        }
+                    }
                 }
             }
         }
+    }
+}
 
-        .container-countries {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: space-between;
+body.dark {
+    i.light { display: block; }
+    @include theme($dark-theme-colors);
+    
+    header { 
+        background-color: map-get($dark-theme-colors, "element"); 
+        
+        .container-theme { color: map-get($dark-theme-colors, "text"); }
+    }
 
-            .container-country {
-                width: 280px;
-                height: 350px;
-                cursor: pointer;
-                @include element($light-theme-colors);
-                
-                .country-img {
-                    object-fit: cover;
-                    border-radius: 6px 6px 0 0;
-                    width: 100%;
-                    height: 170px;
-                }
-
-                .country-text {
-                    padding: 26px;
-                    
-                    .country-name {
-                        font-size: 23px;
-                        margin-bottom: 12px;
-                    }
-                    .country-information li {
-                        margin-bottom: 2px;
-                    }
-                }
+    main article {
+        .container-search {
+            .text-search {
+                i { color: map-get($dark-theme-colors, "text"); }
             }
+
+            input, select { 
+                color: map-get($dark-theme-colors, "text");
+                @include element($dark-theme-colors); 
+
+                &::placeholder { color: map-get($dark-theme-colors, "text"); }
+            }
+        }
+        .container-countries { 
+            .container-country { @include element($dark-theme-colors); }
         }
     }
 }

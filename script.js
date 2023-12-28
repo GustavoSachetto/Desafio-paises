@@ -5,6 +5,18 @@ $(document).ready(function() {
     const urlDefault = "https://restcountries.com/v3.1/";
     
     let urlComplete;
+
+    $(".container-theme").click(() => {
+        $("body").toggleClass("dark");
+        
+        if ($("body").attr("class") == "dark") {
+            $("i.dark").css("display", "none");
+            $(".theme-text").text("Light Mode");
+        } else {
+            $("i.dark").css("display", "block");
+            $(".theme-text").text("Dark Mode");
+        }
+    });
     
     function setCountries(url) {
         let countries = "";
