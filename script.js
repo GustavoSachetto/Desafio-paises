@@ -5,9 +5,9 @@ $(document).ready(function() {
     const urlDefault = "https://restcountries.com/v3.1/";
     
     let urlComplete;
-    let countries;
-
+    
     function setCountries(url) {
+        let countries = "";
         $.getJSON(url, (result) => {
             result.forEach(element => {
                 let country = `
@@ -37,13 +37,17 @@ $(document).ready(function() {
     }
 
     function prepareUrl(complement) {
-        urlComplete = urlDefault + (complement == null ? "all" : `name/${complement}`);        
+        urlComplete = urlDefault + (complement == null ? "all" : complement); 
+        setCountries(urlComplete);       
     }
 
-    txtSearch.change(() => {
-        prepareUrl(txtSearch.val());
+    function filterSearch(target) {
+        target == "txtSearch" ? prepareUrl(`name/${txtSearch.val()}`) : prepareUrl(`region/${slcSearch.val()}`);
+    }
+
+    $(".search").change((e) => {
+        filterSearch(e.currentTarget.id);
     });
 
     prepareUrl();
-    setCountries(urlComplete);
 });

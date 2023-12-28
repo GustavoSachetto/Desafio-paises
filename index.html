@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio-paises</title>
 
+    <link rel="stylesheet" href="scss/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <script src="script.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
@@ -15,13 +18,9 @@
         <div class="container-theme">
             <div class="theme-mode">
                 <i class="bx bx-moon tema-escuro"></i>
+                <!-- <i class='bx bx-sun'></i> -->
             </div>
-            <div class="container-switch">
-                <span class="text-switch">Modo escuro</span>
-                <div class="toggle-switch">
-                    <span class="switch">
-                </div>
-            </div>
+            <span class="theme-text">Dark Mode</span>
         </div>
     </header>
     <main>
@@ -29,11 +28,16 @@
             <section class="container-search">
                 <div class="text-search">
                     <i class='bx bx-search'></i>
-                    <input id="txtSearch" type="text" placeholder="Search for a country...">
+                    <input id="txtSearch" name="txtSearch" class="search" type="text" placeholder="Search for a country...">
                 </div>
                 <div class="select-search">
-                    <select id="slcSearch" name="slcSearch">
+                    <select id="slcSearch" name="slcSearch" class="search">
                         <option value="">Filter by Region</option>
+                        <option value="Africa">Africa</option>
+                        <option value="America">America</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
                     </select>
                 </div>
             </section>

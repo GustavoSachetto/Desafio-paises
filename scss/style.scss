@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap');
+
+$font-default: 'Nunito Sans', Arial, sans-serif;
+$shadow-default-color: hsl(0, 0%, 52%);
+
+$dark-theme-colors: (
+    "element": hsl(209, 23%, 22%),
+    "background": hsl(207, 26%, 17%),
+    "text": hsl(0, 0%, 100%),
+);
+
+$light-theme-colors: (
+    "element": hsl(0, 0%, 100%),
+    "background": hsl(0, 0%, 98%),
+    "text": hsl(200, 15%, 8%),
+);
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    font-family: $font-default;
+}
+
+@mixin theme($colors) {
+    color: map-get($colors, "text");
+    background-color: map-get($colors, "background");
+}
+
+@mixin element($colors) {
+    background-color: map-get($colors, "element");
+    box-shadow: 0 0 4px rgb(map-get($colors, "text"), .15);
+}
+
+body {
+    @include theme($light-theme-colors);
+}
+
+body.dark {
+    @include theme($dark-theme-colors);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 60px;
+
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .container-theme {
+        display: flex;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+main {
+    
+}
