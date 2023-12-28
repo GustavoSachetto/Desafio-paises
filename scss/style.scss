@@ -180,6 +180,7 @@ body.dark {
                 &::placeholder { color: map-get($dark-theme-colors, "text"); }
             }
         }
+        
         .container-countries { 
             .container-country { @include element($dark-theme-colors); }
         }
