@@ -63,7 +63,7 @@ main article .container-search .text-search input, main article .container-searc
   border-radius: 6px;
   transition: 300ms ease-in-out;
   padding: 19px 24px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
 }
 main article .container-search .text-search input:hover, main article .container-search .text-search select:hover, main article .container-search .select-search input:hover, main article .container-search .select-search select:hover {
