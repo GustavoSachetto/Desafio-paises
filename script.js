@@ -1,8 +1,5 @@
 $(document).ready(function() {
-    const txtSearch = $("#txtSearch");
-    const slcSearch = $("#slcSearch");
     const content = $("article#content");
-    const containerCountries = $(".container-countries");
     const urlDefault = "https://restcountries.com/v3.1/";
 
     let result;
@@ -27,55 +24,88 @@ $(document).ready(function() {
         return result;
     }
     
-    async function setCountries() {
-        let countries = "";
+    function setContent() {
+        const search = `
+            <section class="container-search">
+                <div class="text-search">
+                    <i class='bx bx-search'></i>
+                    <input id="txtSearch" name="txtSearch" class="search" type="text" placeholder="Search for a country...">
+                </div>
+                <div class="select-search">
+                    <select id="slcSearch" name="slcSearch" class="search">
+                        <option value="">Filter by Region</option>
+                        <option value="Africa">Africa</option>
+                        <option value="America">America</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
+                </div>
+            </section>
+        `;
 
+        const countries = `
+            <section class="container-countries">
+            </section>
+        `;
+
+        content.html(search + countries);
+
+        $(".search").change((e) => {
+            filterSearch(e.currentTarget.id);
+        });
+    }
+
+    async function setCountries() {
+        const containerCountries = $(".container-countries");
+
+        let auxReturn = "";
         await getData(urlComplete).then((result) => {
             result.forEach(element => {
                 let country = `
-                <div id="${element.name['common']}" class="container-country">
-                    <img src="${element.flags['svg']}" alt="${element.name['common']}-img" class="country-img">
-                    <div class="country-text">
-                        <h2 class="country-name">${element.name['common']}</h2>
-                        <ul class="country-information">
-                            <li>
-                                <strong>Population:</strong>
-                                <span>${element['population']}</span>
-                            </li>
-                            <li>
-                                <strong>Region:</strong>
-                                <span>${element['region']}</span>
-                            </li>
-                            <li>
-                                <strong>Capital:</strong>
-                                <span>${element['capital']}</span>
-                            </li>
-                        </ul>
+                    <div id="${element.name['common']}" class="container-country">
+                        <img src="${element.flags['svg']}" alt="${element.name['common']}-img" class="country-img">
+                        <div class="country-text">
+                            <h2 class="country-name">${element.name['common']}</h2>
+                            <ul class="country-information">
+                                <li>
+                                    <strong>Population:</strong>
+                                    <span>${element['population']}</span>
+                                </li>
+                                <li>
+                                    <strong>Region:</strong>
+                                    <span>${element['region']}</span>
+                                </li>
+                                <li>
+                                    <strong>Capital:</strong>
+                                    <span>${element['capital']}</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 `;
-                countries += country;
+                auxReturn += country;
             });
         }).catch(() => {
-            countries = `<p>Country not found!</p>`;
+            auxReturn = `<p>Country not found!</p>`;
         });
         
-        containerCountries.html(countries);
+        containerCountries.html(auxReturn);
         
         $(".container-country").click((e) => {
-            setCountryDetails(e.currentTarget.id);
+            setCountriesDetails(e.currentTarget.id);
         });   
     }
 
-    function setCountryDetails(countryName) {
+    function setCountriesDetails(countryName) {
         prepareUrl(`name/${countryName}`);
 
-        let countryDetails = "";
+        let countriesDetails = "";
         getData(urlComplete).then((result) => {
-            countryDetails = `
+            countriesDetails = `
             
             <section class="container-details">
-                <button id="country-back">
+                <button class="country-back">
                     <i class='bx bx-arrow-back'></i>
                     <span>Back</span>
                 </button>
@@ -110,26 +140,51 @@ $(document).ready(function() {
                             </li>
                             <li>
                                 <strong>Currencies:</strong>
-                                <span>${result[0].currencies.toString()}</span>
+                                <span>${Object.values(result[0].currencies).map(money => money.name)}</span>
                             </li>
                             <li>
                                 <strong>Languages:</strong>
-                                <span>${result[0].currencies['name']}</span>
+                                <span>${Object.values(result[0].languages).map(lang => lang)}</span>
                             </li>
                         </ul>
-                        <ul class="country-border">
-                            <li>
-                                <strong>Border Countries:</strong>
-                                ${ "A"}
-                            </li>
-                        </ul>
+                        <div class="country-border">
+                            <strong>Border Countries:</strong>
+                        </div>
                     </div>
                 </div>
             </section>
             `;
+
+            content.html(countriesDetails);
             
-            content.html(countryDetails);
+            countryBorders(result[0].borders);
+            
+            $(".country-back").click(() => {
+                initContent();
+            });
         });
+    }
+
+    async function countryBorders(countries) {
+        const countryBorder = $(".country-border");
+
+        let count = 0;
+        let auxReturn = "";
+
+        while (count < countries.length) {
+            prepareUrl(`alpha/${countries[count]}`);
+
+            await getData(urlComplete).then((result)=> {
+                let borders = `
+                    <button class="country-open" value="${result[0].name['common']}">${result[0].name['common']}</button>
+                `;
+                auxReturn += borders;
+            });   
+            
+            count++;
+        }
+
+        countryBorder.append(auxReturn);
     }
 
     function prepareUrl(complement) {
@@ -137,6 +192,9 @@ $(document).ready(function() {
     }
 
     function filterSearch(target) {
+        const txtSearch = $("#txtSearch");
+        const slcSearch = $("#slcSearch");
+
         if (target == "txtSearch") {
             txtSearch.val() != "" ? prepareUrl(`name/${txtSearch.val()}`) : prepareUrl();
         } else {
@@ -146,10 +204,11 @@ $(document).ready(function() {
         setCountries();
     }
 
-    $(".search").change((e) => {
-        filterSearch(e.currentTarget.id);
-    });
-
-    prepareUrl();
-    setCountries();
+    function initContent() {
+        prepareUrl();
+        setContent();
+        setCountries();
+    }
+    
+    initContent();
 });
