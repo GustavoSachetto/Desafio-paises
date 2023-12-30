@@ -153,6 +153,87 @@ body {
                     }
                 }
             }
+
+            .container-country-details {
+                margin: 60px 0;
+                .country-back {
+                    display: flex;
+                    align-items: center;
+                    width: 160px;
+                    padding: 12px 35px;
+                    margin-bottom: 70px;
+                    font-size: 19px;
+                    color: map-get($light-theme-colors, "text");
+                    cursor: pointer;
+                    @include element($light-theme-colors);
+
+                    i {
+                        padding-right: 15px;
+                        font-size: 26px;
+                    }
+                }
+
+                .country-datails {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 460px;
+
+                    .country-img {
+                        object-fit: cover;
+                        width: 44%;
+                        height: 100%;
+                    }
+
+                    .country-text {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        width: 50%;
+                        height: 90%;
+
+                        h2 {
+                            font-size: 34px;
+                        }
+
+                        .country-information {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            padding: 40px 0;
+                            height: 80%; 
+
+                            li {
+                                font-size: 18px;
+                                display: block;    
+                                height: 20%;
+                                box-sizing: border-box;  
+
+                                &:nth-child(odd) {         
+                                    clear: both;           
+                                    float: left;           
+                                    width: 50%;          
+                                }
+                            }
+                        }
+
+                        .country-border {
+                            strong {
+                                font-size: 18px;
+                                padding-right: 10px;
+                            }
+
+                            button {
+                                margin: 4px 2px;
+                                padding: 7px 23px;
+                                cursor: pointer;
+                                color: map-get($light-theme-colors, "text");
+                                @include element($light-theme-colors);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -183,6 +264,22 @@ body.dark {
         
         .container-countries { 
             .container-country { @include element($dark-theme-colors); }
+        }
+
+        .container-country-details {
+            .country-back { 
+                color: map-get($dark-theme-colors, "text");
+                @include element($dark-theme-colors); 
+            }
+
+            .country-datails {
+                .country-border {
+                    button {
+                        color: map-get($dark-theme-colors, "text");
+                        @include element($dark-theme-colors); 
+                    }
+                }
+            }
         }
     }
 }

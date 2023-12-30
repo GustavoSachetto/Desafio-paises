@@ -104,7 +104,7 @@ $(document).ready(function() {
         getData(urlComplete).then((result) => {
             countriesDetails = `
             
-            <section class="container-details">
+            <section class="container-country-details">
                 <button class="country-back">
                     <i class='bx bx-arrow-back'></i>
                     <span>Back</span>
@@ -171,20 +171,28 @@ $(document).ready(function() {
         let count = 0;
         let auxReturn = "";
 
-        while (count < countries.length) {
-            prepareUrl(`alpha/${countries[count]}`);
-
-            await getData(urlComplete).then((result)=> {
-                let borders = `
-                    <button class="country-open" value="${result[0].name['common']}">${result[0].name['common']}</button>
-                `;
-                auxReturn += borders;
-            });   
-            
-            count++;
+        if (countries != null) {       
+            while (count < countries.length) {
+                prepareUrl(`alpha/${countries[count]}`);
+    
+                await getData(urlComplete).then((result)=> {
+                    let borders = `
+                        <button class="country-open" value="${result[0].name['common']}">${result[0].name['common']}</button>
+                    `;
+                    auxReturn += borders;
+                });   
+                
+                count++;
+            }
+        } else {
+            auxReturn = "<span>This country has no borders!</span>";
         }
 
         countryBorder.append(auxReturn);
+
+        $(".country-open").click((e) => {
+            setCountriesDetails(e.currentTarget.value);
+        });
     }
 
     function prepareUrl(complement) {
