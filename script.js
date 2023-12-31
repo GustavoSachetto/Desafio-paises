@@ -63,14 +63,14 @@ $(document).ready(function() {
         await getData(urlComplete).then((result) => {
             result.forEach(element => {
                 let country = `
-                    <div id="${element.name['common']}" class="container-country">
+                    <div id="${element['cca3']}" class="container-country">
                         <img src="${element.flags['svg']}" alt="${element.name['common']}-img" class="country-img">
                         <div class="country-text">
                             <h2 class="country-name">${element.name['common']}</h2>
                             <ul class="country-information">
                                 <li>
                                     <strong>Population:</strong>
-                                    <span>${element['population']}</span>
+                                    <span>${element['population'].toLocaleString('en-US')}</span>
                                 </li>
                                 <li>
                                     <strong>Region:</strong>
@@ -97,8 +97,8 @@ $(document).ready(function() {
         });   
     }
 
-    function setCountriesDetails(countryName) {
-        prepareUrl(`name/${countryName}`);
+    function setCountriesDetails(alphaCode) {
+        prepareUrl(`alpha/${alphaCode}`);
 
         let countriesDetails = "";
         getData(urlComplete).then((result) => {
@@ -109,7 +109,7 @@ $(document).ready(function() {
                     <i class='bx bx-arrow-back'></i>
                     <span>Back</span>
                 </button>
-                <div id="${result[0].name['common']}" class="country-datails">
+                <div id="${result[0]['cca3']}" class="country-datails">
                     <img src="${result[0].flags['svg']}" alt="${result[0].name['common']}-img" class="country-img">
                     <div class="country-text">
                         <h2 class="country-name">${result[0].name['common']}</h2>
@@ -120,7 +120,7 @@ $(document).ready(function() {
                             </li>
                             <li>
                                 <strong>Population:</strong>
-                                <span>${result[0]['population']}</span>
+                                <span>${result[0]['population'].toLocaleString('en-US')}</span>
                             </li>
                             <li>
                                 <strong>Region:</strong>
@@ -136,7 +136,7 @@ $(document).ready(function() {
                             </li>
                             <li>
                                 <strong>Top Level Domain:</strong>
-                                <span>${result[0]['tld']}</span>
+                                <span>${format(result[0]['tld'])}</span>
                             </li>
                             <li>
                                 <strong>Currencies:</strong>
@@ -144,7 +144,7 @@ $(document).ready(function() {
                             </li>
                             <li>
                                 <strong>Languages:</strong>
-                                <span>${Object.values(result[0].languages).map(lang => lang)}</span>
+                                <span>${format(Object.values(result[0].languages).map(lang => lang))}</span>
                             </li>
                         </ul>
                         <div class="country-border">
@@ -154,6 +154,14 @@ $(document).ready(function() {
                 </div>
             </section>
             `;
+
+            function format(array) {
+                auxReturn = "";
+                for (let i = 0; i < array.length; i++) {
+                    auxReturn += array[i] + (i + 1 < array.length ? ", " : "");
+                }
+                return auxReturn;
+            }
 
             content.html(countriesDetails);
             
@@ -177,7 +185,7 @@ $(document).ready(function() {
     
                 await getData(urlComplete).then((result)=> {
                     let borders = `
-                        <button class="country-open" value="${result[0].name['common']}">${result[0].name['common']}</button>
+                        <button class="country-open" value="${result[0]['cca3']}">${result[0].name['common']}</button>
                     `;
                     auxReturn += borders;
                 });   
