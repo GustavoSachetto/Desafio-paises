@@ -183,6 +183,7 @@ body {
                         object-fit: cover;
                         width: 44%;
                         height: 100%;
+                        box-shadow: 0 2px 8px rgb($shadow-default-color, .1);
                     }
 
                     .country-text {

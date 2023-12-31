@@ -154,6 +154,7 @@ body main article .container-country-details .country-datails .country-img {
   object-fit: cover;
   width: 44%;
   height: 100%;
+  box-shadow: 0 2px 8px rgba(133, 133, 133, 0.1);
 }
 body main article .container-country-details .country-datails .country-text {
   display: flex;
