@@ -42,12 +42,13 @@ body header .container-theme i {
   padding-right: 6px;
 }
 body main {
-  padding: 0 60px;
+  padding: 0 20px;
 }
 body main article .container-search {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 40px;
+  padding: 0 40px;
 }
 body main article .container-search .text-search i {
   left: 30px;
@@ -60,6 +61,7 @@ body main article .container-search .text-search, body main article .container-s
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 40px;
 }
 body main article .container-search .text-search input, body main article .container-search .text-search select, body main article .container-search .select-search input, body main article .container-search .select-search select {
   background-color: hsl(0, 0%, 100%);
@@ -88,10 +90,12 @@ body main article .container-countries {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
+  padding: 0 40px;
 }
 body main article .container-countries .container-country {
-  width: 280px;
-  height: 350px;
+  width: 290px;
+  height: 360px;
+  margin-bottom: 40px;
   cursor: pointer;
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
@@ -121,6 +125,7 @@ body main article .container-countries .container-country .country-text .country
   font-weight: 600;
 }
 body main article .container-country-details {
+  padding: 0 40px;
   margin: 60px 0;
 }
 body main article .container-country-details .country-back {
@@ -200,6 +205,62 @@ body main article .container-country-details .country-datails .country-text .cou
 }
 body main article .container-country-details .country-datails .country-text .country-border button:hover {
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
+}
+@media screen and (max-width: 1440px) {
+  body main article .container-countries .container-country {
+    width: 280px;
+    height: 350px;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 550px) {
+  body header {
+    padding: 26px 20px;
+  }
+  body header h1 {
+    font-size: 18px;
+  }
+  body header .container-theme {
+    font-size: 16px;
+  }
+  body header .container-theme i {
+    font-size: 16px;
+    padding-right: 4px;
+  }
+  body main {
+    padding: 0 15px;
+  }
+  body main article .container-countries {
+    padding: 0 20px;
+  }
+  body main article .container-countries .container-country {
+    width: 100vw;
+    height: 390px;
+    margin-bottom: 20px;
+  }
+  body main article .container-countries .container-country .country-img {
+    height: 200px;
+  }
+  body main article .container-countries .container-country .country-text .country-name {
+    font-size: 21px;
+  }
+  body main article .container-search {
+    padding: 0;
+  }
+  body main article .container-search .text-search i, body main article .container-search .select-search i {
+    font-size: 20px;
+  }
+  body main article .container-search .text-search select, body main article .container-search .text-search input, body main article .container-search .select-search select, body main article .container-search .select-search input {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+  body main article .container-search .text-search input, body main article .container-search .select-search input {
+    padding-left: 70px;
+    width: calc(100vw - 115px);
+  }
+  body main article .container-search .text-search select, body main article .container-search .select-search select {
+    width: calc(100vw - 175px);
+  }
 }
 
 body.dark {

@@ -15,6 +15,11 @@ $light-theme-colors: (
     "text": hsl(200, 15%, 8%),
 );
 
+$grid-breakpoints: (
+    "desktop": 1440px,
+    "mobile": 550px,
+);
+
 * {
     margin: 0;
     padding: 0;
@@ -75,13 +80,14 @@ body {
     }
 
     main {
-        padding: 0 60px;
-
+        padding: 0 20px;
+        
         article {
             .container-search {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
-                margin-bottom: 40px;
+                padding: 0 40px;
 
                 .text-search {
                     i {
@@ -97,6 +103,7 @@ body {
                     display: flex;
                     align-items: center;
                     position: relative;
+                    margin-bottom: 40px;
                     
                     input, select {
                         @include element($light-theme-colors);
@@ -118,17 +125,20 @@ body {
                         width: 220px;
                     }
                 }
+                
             }
-
+            
             .container-countries {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 30px;
                 justify-content: space-between;
+                padding: 0 40px;
 
                 .container-country {
-                    width: 280px;
-                    height: 350px;
+                    width: 290px;
+                    height: 360px;
+                    margin-bottom: 40px;
                     cursor: pointer;
                     @include element($light-theme-colors);
                     
@@ -147,15 +157,17 @@ body {
                             margin-bottom: 12px;
                         }
                         .country-information li {
-                            strong { font-weight: 600; }
                             margin-bottom: 2px;
+                            strong { font-weight: 600; }
                         }
                     }
                 }
             }
 
             .container-country-details {
+                padding: 0 40px;
                 margin: 60px 0;
+
                 .country-back {
                     display: flex;
                     align-items: center;
@@ -234,6 +246,85 @@ body {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    @media screen {
+        @media (max-width:map-get($grid-breakpoints, "desktop")) {
+            main article {
+                .container-countries {
+                    .container-country {
+                        width: 280px;
+                        height: 350px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+        
+        @media (max-width: map-get($grid-breakpoints, "mobile")){
+            header {
+                padding: 26px 20px;
+                
+                h1 {
+                    font-size: 18px;
+                }
+
+                .container-theme {
+                    font-size: 16px;
+                    i { 
+                        font-size: 16px; 
+                        padding-right: 4px;
+                    }
+                }
+            }
+            main {
+                padding: 0 15px;
+
+                article {
+                   .container-countries {
+                       padding: 0 20px;
+   
+                       .container-country {
+                           width: 100vw;
+                           height: 390px;
+                           margin-bottom: 20px;
+
+                           .country-img {
+                                height: 200px;
+                           }
+
+                           .country-text {
+                            .country-name { font-size: 21px; }
+                           }
+                       }
+                   }
+   
+                   .container-search {
+                       padding: 0;
+   
+                       .text-search, .select-search {
+                           i {
+                               font-size: 20px;
+                           }
+   
+                           select, input {
+                               padding: 12px 18px;
+                               font-size: 15px;
+                           }
+   
+                           input {
+                               padding-left: 70px;
+                               width: calc(100vw - 115px);
+                           }
+   
+                           select {
+                               width: calc(100vw - 175px);
+                           }
+                       }
+                   }                   
+               }
             }
         }
     }
