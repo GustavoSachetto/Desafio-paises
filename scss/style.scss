@@ -251,7 +251,7 @@ body {
     }
 
     @media screen {
-        @media (max-width:map-get($grid-breakpoints, "desktop")) {
+        @media (max-width: map-get($grid-breakpoints, "desktop")) {
             main article {
                 .container-countries {
                     .container-country {
