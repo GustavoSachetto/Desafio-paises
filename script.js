@@ -191,6 +191,7 @@ $(document).ready(function() {
                         </ul>
                         <div class="country-border">
                             <strong>Border Countries:</strong>
+                            <div class="borders"></div>
                         </div>
                     </div>
                 </div>
@@ -216,7 +217,7 @@ $(document).ready(function() {
     }
 
     async function countryBorders(countries) {
-        const countryBorder = $(".country-border");
+        const countryBorder = $(".borders");
 
         let count = 0;
         let auxReturn = "";

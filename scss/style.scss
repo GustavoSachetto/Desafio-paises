@@ -280,6 +280,9 @@ body {
                         }
 
                         .country-border {
+                            display: flex;
+                            align-items: center;
+
                             strong {
                                 font-size: 18px;
                                 padding-right: 10px;
@@ -295,6 +298,19 @@ body {
                         }
                     }
                 }
+
+                @media (max-width: 1100px) {
+                    .country-datails {
+                        display: flex;
+                        flex-direction: column;   
+                             
+                        .country-img, .country-text { width: 100%; }
+
+                        .country-img {
+                            margin-bottom: 40px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -307,6 +323,13 @@ body {
                         width: 280px;
                         height: 350px;
                         margin-bottom: 20px;
+                    }
+                }
+                .container-country-details {
+                    .country-datails {
+                        .country-img {
+                            height: 80%;
+                        }
                     }
                 }
             }
@@ -382,7 +405,65 @@ body {
                                 }
                             }
                         }
-                   }                   
+                   }             
+
+                   .container-country-details {
+                       padding: 0;
+                       margin: 15px 0;
+    
+                       .country-back {
+                            width: 120px;
+                            padding: 8px 12px;
+                            font-size: 17px;
+                            margin-bottom: 55px;
+
+                            i {
+                                padding-right: 15px;
+                                font-size: 21px;
+                            }
+                       }
+    
+                       .country-datails {  
+                            height: 100vh;  
+                            margin-bottom: 20px; 
+                            
+                            .country-img, .country-text { width: 100%; }
+        
+                            .country-img {
+                                max-height: 260px;
+                                margin-bottom: 60px;
+                            }
+
+                            .country-text {
+                                h2 {
+                                    font-size: 24px;
+                                }
+
+                                .country-information {
+                                    height: 100%;
+                                    padding: 20px 0;
+                                    flex-wrap: nowrap;
+
+                                    li {
+                                        font-size: 16px;
+                                        padding: 8px 0;
+
+                                        &:nth-child(odd) {
+                                            width: 100%;
+                                        }
+        
+                                        &:nth-child(5) { margin-bottom: 18px; }
+                                    }
+
+                                }
+                                .country-border {
+                                    display: block;
+
+                                    .borders { margin: 10px 0; }
+                                }
+                            }
+                        }
+                   }
                }
             }
         }
