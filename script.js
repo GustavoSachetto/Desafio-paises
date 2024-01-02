@@ -28,18 +28,23 @@ $(document).ready(function() {
         const search = `
             <section class="container-search">
                 <div class="text-search">
-                    <i class='bx bx-search'></i>
-                    <input id="txtSearch" name="txtSearch" class="search" type="text" placeholder="Search for a country...">
+                    <i class='bx bx-search text-button'></i>
+                    <input class="txtSearch" type="text" placeholder="Search for a country...">
                 </div>
                 <div class="select-search">
-                    <select id="slcSearch" name="slcSearch" class="search">
-                        <option value="">Filter by Region</option>
-                        <option value="Africa">Africa</option>
-                        <option value="America">America</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Europe">Europe</option>
-                        <option value="Oceania">Oceania</option>
-                    </select>
+                    <div class="slcSearch">
+                        <div class="select-button">
+                            <span class="select-text">Filter by Region</span>
+                            <i class='bx bxs-chevron-down' ></i>
+                        </div>
+                        <ul class="options">
+                            <li class="option">Africa</li>
+                            <li class="option">America</li>
+                            <li class="option">Asia</li>
+                            <li class="option">Europe</li>
+                            <li class="option">Oceania</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         `;
@@ -51,9 +56,42 @@ $(document).ready(function() {
 
         content.html(search + countries);
 
-        $(".search").change((e) => {
-            filterSearch(e.currentTarget.id);
+        searchEvents();
+    }
+
+    function searchEvents() {
+        let optionState = false;
+
+        function optionParse(state) {
+            if (state) {
+                optionState = true;
+                $(".options").fadeIn();
+                $(".select-button > i").addClass("rotate");
+            } else {
+                optionState = false;
+                $(".options").fadeOut();
+                $(".select-button > i").removeClass("rotate");
+            }
+        }
+
+        $(".select-button").click(() => {
+            optionState = optionState == false ? true : false;
+            optionParse(optionState);
         });
+
+        $(".txtSearch").change((e) => {
+            optionParse(false);
+            filterSearch("name", e.currentTarget.value);
+        });
+
+        $(".text-button").click(() => {
+            filterSearch("name", $(".txtSearch").val());
+        });
+
+        $(".slcSearch .option").click((e) => {
+            optionParse(false);
+            filterSearch("region", e.currentTarget.outerText);
+        }); 
     }
 
     async function setCountries() {
@@ -207,14 +245,11 @@ $(document).ready(function() {
         urlComplete = urlDefault + (complement == null ? "all" : complement); 
     }
 
-    function filterSearch(target) {
-        const txtSearch = $("#txtSearch");
-        const slcSearch = $("#slcSearch");
-
-        if (target == "txtSearch") {
-            txtSearch.val() != "" ? prepareUrl(`name/${txtSearch.val()}`) : prepareUrl();
+    function filterSearch(target, search) {
+        if (target == "name") {
+            search != "" ? prepareUrl(`name/${search}`) : prepareUrl();
         } else {
-            slcSearch.val() != "" ? prepareUrl(`region/${slcSearch.val()}`) : prepareUrl();
+            search != "" ? prepareUrl(`region/${search}`) : prepareUrl();
         }
 
         setCountries();

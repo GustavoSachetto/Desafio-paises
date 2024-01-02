@@ -50,40 +50,96 @@ body main article .container-search {
   justify-content: space-between;
   padding: 0 40px;
 }
+body main article .container-search .text-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+body main article .container-search .text-search input {
+  padding: 19px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
+  border-radius: 6px;
+  transition: 300ms ease-in-out;
+  width: 370px;
+  padding-left: 70px;
+}
+body main article .container-search .text-search input:hover {
+  box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
+}
+body main article .container-search .text-search input::placeholder {
+  color: hsl(0, 0%, 52%);
+}
 body main article .container-search .text-search i {
   left: 30px;
   font-size: 23px;
   font-weight: bold;
   position: absolute;
   color: hsl(0, 0%, 52%);
+  cursor: pointer;
+  transition: 0.2s ease-out;
 }
-body main article .container-search .text-search, body main article .container-search .select-search {
+body main article .container-search .text-search i:hover {
+  scale: 1.1;
+}
+body main article .container-search .select-search {
   display: flex;
   align-items: center;
   position: relative;
   margin-bottom: 40px;
 }
-body main article .container-search .text-search input, body main article .container-search .text-search select, body main article .container-search .select-search input, body main article .container-search .select-search select {
+body main article .container-search .select-search .select-button {
+  padding: 19px 24px;
+  font-size: 17px;
+  font-weight: 600;
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
   border-radius: 6px;
   transition: 300ms ease-in-out;
-  padding: 19px 24px;
-  font-size: 17px;
-  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  position: relative;
+  cursor: pointer;
 }
-body main article .container-search .text-search input:hover, body main article .container-search .text-search select:hover, body main article .container-search .select-search input:hover, body main article .container-search .select-search select:hover {
+body main article .container-search .select-search .select-button:hover {
   box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
 }
-body main article .container-search .text-search input, body main article .container-search .select-search input {
-  width: 370px;
-  padding-left: 70px;
+body main article .container-search .select-search .select-button i {
+  font-size: 21px;
+  transition: 0.3s ease-out;
 }
-body main article .container-search .text-search input::placeholder, body main article .container-search .select-search input::placeholder {
-  color: hsl(0, 0%, 52%);
+body main article .container-search .select-search .select-button i.rotate {
+  rotate: -180deg;
 }
-body main article .container-search .text-search select, body main article .container-search .select-search select {
-  width: 220px;
+body main article .container-search .select-search .options {
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 0 8px rgba(17, 21, 23, 0.09);
+  border-radius: 6px;
+  transition: 300ms ease-in-out;
+  display: none;
+  position: absolute;
+  top: 67px;
+  width: 248px;
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+body main article .container-search .select-search .options:hover {
+  box-shadow: 0 0 8px rgba(17, 21, 23, 0.22);
+}
+body main article .container-search .select-search .options li {
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 6px 14px;
+  border-radius: 7px;
+  transition: 0.3s ease-out;
+}
+body main article .container-search .select-search .options li:hover {
+  background-color: rgba(133, 133, 133, 0.12);
 }
 body main article .container-countries {
   display: flex;

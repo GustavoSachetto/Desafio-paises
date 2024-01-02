@@ -45,6 +45,20 @@ $grid-breakpoints: (
     }
 }
 
+@mixin input() {
+    padding: 19px 24px;
+    font-size: 17px;
+    font-weight: 600;
+    @include element($light-theme-colors);
+}
+
+@mixin search() {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
 body {
     i.light { display: none; }
     @include theme($light-theme-colors);
@@ -90,29 +104,10 @@ body {
                 padding: 0 40px;
 
                 .text-search {
-                    i {
-                        left: 30px;
-                        font-size: 23px;
-                        font-weight: bold;
-                        position: absolute;
-                        color: $shadow-default-color;
-                    }
-                }
-
-                .text-search, .select-search {
-                    display: flex;
-                    align-items: center;
-                    position: relative;
-                    margin-bottom: 40px;
-                    
-                    input, select {
-                        @include element($light-theme-colors);
-                        padding: 19px 24px;
-                        font-size: 17px;
-                        font-weight: 600;
-                    }
+                    @include search();
 
                     input {
+                        @include input();
                         width: 370px;
                         padding-left: 70px;
 
@@ -121,11 +116,65 @@ body {
                         }
                     }
 
-                    select {
-                        width: 220px;
+                    i {
+                        left: 30px;
+                        font-size: 23px;
+                        font-weight: bold;
+                        position: absolute;
+                        color: $shadow-default-color;
+                        cursor: pointer;
+                        transition: 0.2s ease-out;
+
+                        &:hover {
+                            scale: 1.1;
+                        }
                     }
                 }
-                
+
+                .select-search {
+                    @include search();
+
+                    .select-button {
+                        @include input();
+                        display: flex;
+                        justify-content: space-between;
+                        width: 200px;
+                        position: relative;
+                        cursor: pointer;
+                        
+                        i {
+                            font-size: 21px;
+                            transition: 0.3s ease-out;
+                        }
+
+                        i.rotate {
+                            rotate: -180deg;
+                        }
+                    }
+
+                    .options {
+                        @include element($light-theme-colors);
+                        display: none;
+                        position: absolute;
+                        top: 67px;
+                        width: 248px;
+                        padding: 14px 0;
+                        font-weight: 600;
+                        font-size: 17px;
+
+                        li {
+                            cursor: pointer;
+                            margin: 0 10px;
+                            padding: 6px 14px;
+                            border-radius: 7px;
+                            transition: 0.3s ease-out;
+
+                            &:hover {
+                                background-color: rgb($shadow-default-color, .12);
+                            }
+                        }
+                    }
+                }
             }
             
             .container-countries {
