@@ -306,7 +306,7 @@ body main article .container-country-details .country-datails .country-text .cou
   body main article .container-search .text-search i, body main article .container-search .select-search i {
     font-size: 20px;
   }
-  body main article .container-search .text-search select, body main article .container-search .text-search input, body main article .container-search .select-search select, body main article .container-search .select-search input {
+  body main article .container-search .text-search .select-button, body main article .container-search .text-search input, body main article .container-search .select-search .select-button, body main article .container-search .select-search input {
     padding: 12px 18px;
     font-size: 15px;
   }
@@ -314,8 +314,17 @@ body main article .container-country-details .country-datails .country-text .cou
     padding-left: 70px;
     width: calc(100vw - 115px);
   }
-  body main article .container-search .text-search select, body main article .container-search .select-search select {
+  body main article .container-search .select-search .select-button {
     width: calc(100vw - 175px);
+  }
+  body main article .container-search .select-search .options {
+    top: 50px;
+    width: calc(100vw - 155px);
+    padding: 10px 8px;
+  }
+  body main article .container-search .select-search .options .option {
+    font-size: 15px;
+    padding: 8px 10px;
   }
 }
 
@@ -335,17 +344,17 @@ body.dark header .container-theme {
 body.dark main article .container-search .text-search i {
   color: hsl(0, 0%, 100%);
 }
-body.dark main article .container-search input, body.dark main article .container-search select {
+body.dark main article .container-search input, body.dark main article .container-search .select-button, body.dark main article .container-search .options {
   color: hsl(0, 0%, 100%);
   background-color: hsl(209, 23%, 22%);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.09);
   border-radius: 6px;
   transition: 300ms ease-in-out;
 }
-body.dark main article .container-search input:hover, body.dark main article .container-search select:hover {
+body.dark main article .container-search input:hover, body.dark main article .container-search .select-button:hover, body.dark main article .container-search .options:hover {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.22);
 }
-body.dark main article .container-search input::placeholder, body.dark main article .container-search select::placeholder {
+body.dark main article .container-search input::placeholder, body.dark main article .container-search .select-button::placeholder, body.dark main article .container-search .options::placeholder {
   color: hsl(0, 0%, 100%);
 }
 body.dark main article .container-countries .container-country {

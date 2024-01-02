@@ -79,19 +79,23 @@ $(document).ready(function() {
             optionParse(optionState);
         });
 
-        $(".txtSearch").change((e) => {
-            optionParse(false);
-            filterSearch("name", e.currentTarget.value);
-        });
-
-        $(".text-button").click(() => {
-            filterSearch("name", $(".txtSearch").val());
-        });
-
         $(".slcSearch .option").click((e) => {
             optionParse(false);
+            $(".txtSearch").val("");
+            $(".select-text").text(e.currentTarget.outerText);
             filterSearch("region", e.currentTarget.outerText);
         }); 
+
+        $(".txtSearch").change((e) => {
+            optionParse(false);
+            $(".select-text").text("Filter by Region");
+            filterSearch("name", e.currentTarget.value);
+        });
+        
+        $(".text-button").click(() => {
+            $(".select-text").text("Filter by Region");
+            filterSearch("name", $(".txtSearch").val());
+        });
     }
 
     async function setCountries() {

@@ -354,11 +354,9 @@ body {
                        padding: 0;
    
                        .text-search, .select-search {
-                           i {
-                               font-size: 20px;
-                           }
+                           i { font-size: 20px; }
    
-                           select, input {
+                           .select-button, input {
                                padding: 12px 18px;
                                font-size: 15px;
                            }
@@ -367,11 +365,23 @@ body {
                                padding-left: 70px;
                                width: calc(100vw - 115px);
                            }
-   
-                           select {
-                               width: calc(100vw - 175px);
-                           }
                        }
+
+                       .select-search {
+                            .select-button {
+                                width: calc(100vw - 175px);
+                            }
+                            .options {
+                                top: 50px;
+                                width: calc(100vw - 155px);
+                                padding: 10px 8px;
+                                
+                                .option {
+                                    font-size: 15px;
+                                    padding: 8px 10px;
+                                }
+                            }
+                        }
                    }                   
                }
             }
@@ -395,7 +405,7 @@ body.dark {
                 i { color: map-get($dark-theme-colors, "text"); }
             }
 
-            input, select { 
+            input, .select-button, .options { 
                 color: map-get($dark-theme-colors, "text");
                 @include element($dark-theme-colors); 
 
