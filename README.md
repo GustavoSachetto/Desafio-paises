@@ -16,7 +16,7 @@ Neste projeto utilizei __HTML, JS e SASS.__ Abaixo está tudo que foi estudado p
 * __SASS:__ Declaração de variáveis, declaração de objetos, crição de mixin e include e responsividade.
   
 ## O desafio
-Seu desafio é integrar com a API REST Countries para extrair dados de países e exibi-los como nos designs.
+Seu desafio é integrar com a [API REST Countries](https://restcountries.com/) para extrair dados de países e exibi-los como nos designs.
 
 Você pode usar qualquer framework/biblioteca JavaScript no front-end, como React ou Vue . Você também tem controle total sobre quais pacotes você usa para fazer coisas como fazer requisições HTTP ou estilizar seu projeto.
 
