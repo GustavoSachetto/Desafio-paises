@@ -5,7 +5,7 @@
 ## Sobre
 Esse site é a resolução de um desafio front-end elaborado pelo [Frontend Mentor](https://www.frontendmentor.io/). Na qual o intuito do projeto é desenvolver o site responsivo utilizando qualquer tecnologia com base no design proposto.
 
-* __Link de acesso:__ https://gustavosachetto.github.io/Desafio-paises/
+* __Link de acesso:__ https://gustavosachetto.site/desafio-paises
 
 ## Tecnologias
 Neste projeto utilizei __HTML, JS e SASS.__ Abaixo está tudo que foi estudado para desenvolver o site:
